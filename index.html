@@ -93,7 +93,15 @@
         flex-direction: column;
         align-items: center;
         gap: 40px;
-        padding-bottom: 60px;
+        padding: 0 16px 60px;
+        width: 100%;
+      }
+
+      .page-frame {
+        position: relative;
+        width: var(--page-width);
+        height: var(--page-height);
+        flex: 0 0 auto;
       }
 
       .page {
@@ -105,6 +113,43 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
+        transform-origin: top left;
+      }
+
+      .page-frame > .page {
+        position: absolute;
+        inset: 0 auto auto 0;
+      }
+
+      @media screen and (max-width: 900px) {
+        body {
+          padding-top: 64px;
+        }
+
+        .toolbar {
+          height: 56px;
+          padding: 0 14px;
+          gap: 12px;
+        }
+
+        .toolbar-brand {
+          font-size: 16px;
+          letter-spacing: 1px;
+        }
+
+        .toolbar-hint {
+          display: none;
+        }
+
+        .btn-print {
+          padding: 8px 14px;
+          font-size: 12px;
+        }
+
+        .pages-wrap {
+          gap: 18px;
+          padding: 0 10px 28px;
+        }
       }
 
       @media print {
@@ -123,18 +168,27 @@
           padding: 0;
         }
 
+        .page-frame {
+          width: 210mm !important;
+          height: 297mm !important;
+          page-break-after: always;
+          break-after: page;
+        }
+
         .page {
           box-shadow: none;
           margin: 0;
-          page-break-after: always;
           width: 210mm;
           height: 297mm;
           overflow: hidden;
           border: none;
+          position: relative;
+          transform: none !important;
         }
 
-        .page:last-child {
+        .page-frame:last-child {
           page-break-after: avoid;
+          break-after: auto;
         }
         @page {
           size: A4;
@@ -2025,5 +2079,43 @@
         </div>
       </div>
     </div>
+    <script>
+      (() => {
+        const wrapPages = () => {
+          document.querySelectorAll(".pages-wrap > .page").forEach((page) => {
+            const frame = document.createElement("div");
+            frame.className = "page-frame";
+            page.before(frame);
+            frame.appendChild(page);
+          });
+        };
+
+        const fitPages = () => {
+          const availableWidth = Math.max(window.innerWidth - 20, 280);
+
+          document.querySelectorAll(".page-frame").forEach((frame) => {
+            const page = frame.querySelector(".page");
+            if (!page) return;
+
+            page.style.transform = "none";
+            frame.style.width = "";
+            frame.style.height = "";
+
+            const pageWidth = page.offsetWidth;
+            const pageHeight = page.offsetHeight;
+            const scale = Math.min(1, availableWidth / pageWidth);
+
+            page.style.transform = `scale(${scale})`;
+            frame.style.width = `${pageWidth * scale}px`;
+            frame.style.height = `${pageHeight * scale}px`;
+          });
+        };
+
+        wrapPages();
+        fitPages();
+        window.addEventListener("resize", fitPages);
+        window.addEventListener("orientationchange", fitPages);
+      })();
+    </script>
   </body>
 </html>
