@@ -768,7 +768,7 @@
 
       .product-showcase-content {
         flex: 1;
-        padding: 78px 60px 60px;
+        padding: 78px 60px 50px;
         display: flex;
         flex-direction: column;
       }
@@ -778,7 +778,7 @@
         justify-content: space-between;
         align-items: flex-end;
         gap: 24px;
-        margin-bottom: 34px;
+        margin-bottom: 28px;
       }
 
       .product-showcase-note {
@@ -790,23 +790,27 @@
       }
 
       .product-showcase-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
         flex: 1;
       }
 
       .showcase-card {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 260px 1fr;
         background: white;
         border: 1px solid rgba(139, 94, 60, 0.14);
-        min-width: 0;
+        overflow: hidden;
+        min-height: 0;
+        flex: 1;
       }
 
       .showcase-image {
-        height: 155px;
+        height: 100%;
+        min-height: 160px;
         overflow: hidden;
+        position: relative;
       }
 
       .showcase-image img {
@@ -817,56 +821,79 @@
       }
 
       .showcase-body {
-        padding: 22px 22px 18px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        flex: 1;
+        padding: 20px 26px 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto 1fr;
+        gap: 0 24px;
       }
 
       .showcase-kicker {
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--amber);
+        grid-column: 1 / -1;
+        margin-bottom: 4px;
       }
 
       .showcase-title {
         font-family: "Playfair Display", serif;
-        font-size: 28px;
+        font-size: 24px;
         color: var(--bark);
+        grid-column: 1 / -1;
+        margin-bottom: 8px;
       }
 
       .showcase-desc {
-        font-size: 16px;
-        line-height: 1.7;
+        font-size: 13px;
+        line-height: 1.65;
         color: #715746;
+        grid-column: 1 / -1;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(139,94,60,0.12);
+      }
+
+      .showcase-col {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .showcase-col-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--amber);
+        margin-bottom: 8px;
       }
 
       .showcase-list {
         list-style: none;
         display: grid;
-        gap: 8px;
-        margin-top: auto;
+        gap: 5px;
+        margin: 0;
+        padding: 0;
       }
 
       .showcase-list li {
-        font-size: 14px;
+        font-size: 12px;
         color: #5d4739;
         line-height: 1.5;
-        padding-left: 14px;
+        padding-left: 13px;
         position: relative;
       }
 
       .showcase-list li::before {
         content: "";
-        width: 5px;
-        height: 5px;
+        width: 4px;
+        height: 4px;
         border-radius: 50%;
         background: var(--amber);
         position: absolute;
         left: 0;
-        top: 7px;
+        top: 6px;
       }
 
       .process-page {
@@ -1569,79 +1596,85 @@
           <div class="product-showcase-grid">
             <div class="showcase-card">
               <div class="showcase-image">
-                <img src="img/pallet.png" alt="Solid pallet" />
+                <img src="img/pallet.png" alt="Solid Wood Pallet" />
               </div>
               <div class="showcase-body">
-                <div class="showcase-kicker" contenteditable="true">
-                  Product 01
+                <div class="showcase-kicker" contenteditable="true">Product 01</div>
+                <div class="showcase-title" contenteditable="true">Solid Wood Pallet</div>
+                <p class="showcase-desc" contenteditable="true">Reliable pallet solutions for handling, stacking, transportation, and operational movement.</p>
+                <div class="showcase-col">
+                  <div class="showcase-col-label">Product Features</div>
+                  <ul class="showcase-list">
+                    <li contenteditable="true">Built for everyday logistics handling</li>
+                    <li contenteditable="true">Designed for stable load support</li>
+                    <li contenteditable="true">Suitable for commercial transport operations</li>
+                  </ul>
                 </div>
-                <div class="showcase-title" contenteditable="true">
-                  Solid Wood Pallet
+                <div class="showcase-col">
+                  <div class="showcase-col-label">Customisation Available</div>
+                  <ul class="showcase-list">
+                    <li contenteditable="true">Custom sizes and dimensions to fit your racking or transport requirements</li>
+                    <li contenteditable="true">Choice of timber species based on load and durability needs</li>
+                    <li contenteditable="true">Heat treatment available for export compliance</li>
+                    <li contenteditable="true">Bulk order quantities accommodated</li>
+                  </ul>
                 </div>
-                <p class="showcase-desc" contenteditable="true">
-                  Reliable pallet solutions for handling, stacking, transportation, and operational movement.
-                </p>
-                <ul class="showcase-list">
-                  <li contenteditable="true">Built for everyday logistics handling</li>
-                  <li contenteditable="true">Designed for stable load support</li>
-                  <li contenteditable="true">Suitable for commercial transport operations</li>
-                  <li contenteditable="true">Available in custom sizes and dimensions to fit your racking or transport requirements</li>
-                  <li contenteditable="true">Choice of timber species based on load and durability needs</li>
-                  <li contenteditable="true">Treatment options available including heat treatment for export compliance</li>
-                  <li contenteditable="true">Bulk order quantities accommodated</li>
-                </ul>
               </div>
             </div>
 
             <div class="showcase-card">
               <div class="showcase-image">
-                <img src="img/product2.png" alt="Laminate wood" />
+                <img src="img/product2.png" alt="Laminated Wood" />
               </div>
               <div class="showcase-body">
-                <div class="showcase-kicker" contenteditable="true">
-                  Product 02
+                <div class="showcase-kicker" contenteditable="true">Product 02</div>
+                <div class="showcase-title" contenteditable="true">Laminated Wood</div>
+                <p class="showcase-desc" contenteditable="true">Processed timber products prepared for cleaner finishes, consistency, and downstream applications.</p>
+                <div class="showcase-col">
+                  <div class="showcase-col-label">Product Features</div>
+                  <ul class="showcase-list">
+                    <li contenteditable="true">Provides more consistent finishes and sizing</li>
+                    <li contenteditable="true">Suitable for repeated commercial applications</li>
+                    <li contenteditable="true">Supports cleaner material presentation</li>
+                  </ul>
                 </div>
-                <div class="showcase-title" contenteditable="true">
-                  Laminated Wood
+                <div class="showcase-col">
+                  <div class="showcase-col-label">Customisation Available</div>
+                  <ul class="showcase-list">
+                    <li contenteditable="true">Custom sizing and thickness available on request</li>
+                    <li contenteditable="true">Select from different timber species for varying finish and grain preference</li>
+                    <li contenteditable="true">Surface treatment and finish options to suit your application</li>
+                    <li contenteditable="true">Suitable for bulk and repeat commercial orders</li>
+                  </ul>
                 </div>
-                <p class="showcase-desc" contenteditable="true">
-                  Processed timber products prepared for cleaner finishes, consistency, and downstream applications.
-                </p>
-                <ul class="showcase-list">
-                  <li contenteditable="true">Provides more consistent finishes and sizing</li>
-                  <li contenteditable="true">Suitable for repeated commercial applications</li>
-                  <li contenteditable="true">Supports cleaner material presentation</li>
-                  <li contenteditable="true">Custom sizing and thickness available on request</li>
-                  <li contenteditable="true">Select from different timber species for varying finish and grain preference</li>
-                  <li contenteditable="true">Surface treatment and finish options to suit your application</li>
-                  <li contenteditable="true">Suitable for bulk and repeat commercial orders</li>
-                </ul>
               </div>
             </div>
 
             <div class="showcase-card">
               <div class="showcase-image">
-                <img src="img/fj.jpeg" alt="Finger joint timber" />
+                <img src="img/fj.jpeg" alt="Finger Joint timber" />
               </div>
               <div class="showcase-body">
-                <div class="showcase-kicker" contenteditable="true">
-                  Product 03
+                <div class="showcase-kicker" contenteditable="true">Product 03</div>
+                <div class="showcase-title" contenteditable="true">Finger Joint</div>
+                <p class="showcase-desc" contenteditable="true">Engineered timber components arranged for stable assembly and efficient material utilization.</p>
+                <div class="showcase-col">
+                  <div class="showcase-col-label">Product Features</div>
+                  <ul class="showcase-list">
+                    <li contenteditable="true">Supports efficient material utilization</li>
+                    <li contenteditable="true">Prepared for structured fabrication processes</li>
+                    <li contenteditable="true">Designed for operational practicality</li>
+                  </ul>
                 </div>
-                <div class="showcase-title" contenteditable="true">
-                  Finger Joint
+                <div class="showcase-col">
+                  <div class="showcase-col-label">Customisation Available</div>
+                  <ul class="showcase-list">
+                    <li contenteditable="true">Custom lengths and cross-section dimensions available</li>
+                    <li contenteditable="true">Timber species selection based on structural or aesthetic requirement</li>
+                    <li contenteditable="true">Treatment and finish options for indoor or outdoor application</li>
+                    <li contenteditable="true">Flexible order quantities for small and large manufacturers</li>
+                  </ul>
                 </div>
-                <p class="showcase-desc" contenteditable="true">
-                  Engineered timber components arranged for stable assembly and efficient material utilization.
-                </p>
-                <ul class="showcase-list">
-                  <li contenteditable="true">Supports efficient material utilization</li>
-                  <li contenteditable="true">Prepared for structured fabrication processes</li>
-                  <li contenteditable="true">Designed for operational practicality</li>
-                  <li contenteditable="true">Custom lengths and cross-section dimensions available</li>
-                  <li contenteditable="true">Timber species selection based on structural or aesthetic requirement</li>
-                  <li contenteditable="true">Treatment and finish options for indoor or outdoor application</li>
-                  <li contenteditable="true">Flexible order quantities for both small fabricators and large manufacturers</li>
-                </ul>
               </div>
             </div>
           </div>
