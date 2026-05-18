@@ -765,27 +765,24 @@
       /* ── PRODUCT PAGES ── */
       .product-page {
         display: flex !important;
-        flex-direction: row;
+        flex-direction: row !important;
+        flex-wrap: nowrap;
         background: var(--cream);
         overflow: hidden;
       }
 
       .product-image-panel {
         width: 45%;
-        flex-shrink: 0;
+        flex: 0 0 45%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
         position: relative;
         overflow: hidden;
-        align-self: stretch;
       }
 
       .product-image-panel img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-        display: block;
+        display: none;
       }
 
       .product-image-overlay {
@@ -1638,8 +1635,7 @@
 
       <!-- PAGE 4a: PRODUCT 01 -->
       <div class="page product-page">
-        <div class="product-image-panel">
-          <img src="img/pallet.png" alt="Solid Wood Pallet" />
+        <div class="product-image-panel" style="background-image: url('img/pallet.png');">
           <div class="product-image-overlay"></div>
           <div class="product-image-num">01</div>
           <div class="product-image-label">Product 01</div>
@@ -1681,8 +1677,7 @@
 
       <!-- PAGE 4b: PRODUCT 02 -->
       <div class="page product-page">
-        <div class="product-image-panel">
-          <img src="img/product2.png" alt="Laminated Wood" />
+        <div class="product-image-panel" style="background-image: url('img/product2.png');">
           <div class="product-image-overlay"></div>
           <div class="product-image-num">02</div>
           <div class="product-image-label">Product 02</div>
@@ -1724,8 +1719,7 @@
 
       <!-- PAGE 4c: PRODUCT 03 -->
       <div class="page product-page">
-        <div class="product-image-panel">
-          <img src="img/fj.jpeg" alt="Finger Joint" />
+        <div class="product-image-panel" style="background-image: url('img/fj.jpeg');">
           <div class="product-image-overlay"></div>
           <div class="product-image-num">03</div>
           <div class="product-image-label">Product 03</div>
