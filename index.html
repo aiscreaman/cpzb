@@ -764,8 +764,9 @@
 
       /* ── PRODUCT PAGES ── */
       .product-page {
-        display: grid;
+        display: grid !important;
         grid-template-columns: 45% 55%;
+        grid-template-rows: 1fr;
         background: var(--cream);
         overflow: hidden;
       }
@@ -773,14 +774,19 @@
       .product-image-panel {
         position: relative;
         overflow: hidden;
+        width: 100%;
         height: 100%;
+        min-height: 0;
       }
 
       .product-image-panel img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center;
         display: block;
+        position: absolute;
+        inset: 0;
       }
 
       .product-image-overlay {
@@ -815,8 +821,9 @@
       .product-content-panel {
         display: flex;
         flex-direction: column;
-        padding: 0;
         overflow: hidden;
+        height: 100%;
+        min-height: 0;
       }
 
       .product-section-bar {
@@ -845,10 +852,11 @@
 
       .product-body {
         flex: 1;
-        padding: 40px 44px 36px;
+        padding: 36px 44px 32px;
         display: flex;
         flex-direction: column;
-        gap: 0;
+        min-height: 0;
+        overflow: hidden;
       }
 
       .product-num-label {
@@ -861,18 +869,18 @@
 
       .product-name {
         font-family: "Playfair Display", serif;
-        font-size: 38px;
+        font-size: 34px;
         color: var(--bark);
         line-height: 1.15;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
       }
 
       .product-desc {
-        font-size: 14px;
-        line-height: 1.75;
+        font-size: 13px;
+        line-height: 1.7;
         color: #715746;
-        margin-bottom: 28px;
-        padding-bottom: 24px;
+        margin-bottom: 20px;
+        padding-bottom: 18px;
         border-bottom: 1px solid rgba(139,94,60,0.15);
       }
 
@@ -881,6 +889,8 @@
         grid-template-columns: 1fr 1fr;
         gap: 24px;
         flex: 1;
+        min-height: 0;
+        overflow: hidden;
       }
 
       .product-col-head {
