@@ -762,171 +762,183 @@
         font-weight: 300;
       }
 
-      /* ── PRODUCT PAGES ── */
+      /* ── PRODUCT PAGES — Editorial Style ── */
       .product-page {
         display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap;
-        background: var(--cream);
+        flex-direction: column !important;
+        background: var(--charcoal);
         overflow: hidden;
+        position: relative;
       }
 
-      .product-image-panel {
-        width: 45%;
-        flex: 0 0 45%;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
+      /* Top 58% — full bleed image zone */
+      .prod-hero {
+        flex: 0 0 58%;
         position: relative;
         overflow: hidden;
+        background-size: cover;
+        background-position: center 30%;
+        background-repeat: no-repeat;
       }
 
-      .product-image-panel img {
-        display: none;
-      }
-
-      .product-image-overlay {
+      /* Dark vignette over image */
+      .prod-hero::before {
+        content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(to top, rgba(34,18,8,0.72) 0%, rgba(34,18,8,0.08) 55%, transparent 100%);
+        background:
+          linear-gradient(to bottom, rgba(26,20,16,0.18) 0%, rgba(26,20,16,0.0) 40%, rgba(26,20,16,0.85) 100%),
+          linear-gradient(to right, rgba(26,20,16,0.5) 0%, transparent 60%);
+        z-index: 1;
       }
 
-      .product-image-num {
+      /* Section label top-left inside image */
+      .prod-hero-tag {
         position: absolute;
-        bottom: 32px;
-        left: 32px;
-        font-family: "Playfair Display", serif;
-        font-size: 80px;
-        font-weight: 700;
-        color: rgba(255,255,255,0.18);
-        line-height: 1;
-        letter-spacing: -2px;
-      }
-
-      .product-image-label {
-        position: absolute;
-        bottom: 36px;
-        left: 38px;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: var(--amber);
-      }
-
-      .product-content-panel {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        min-width: 0;
-      }
-
-      .product-section-bar {
-        background: var(--charcoal);
-        padding: 14px 40px;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
         display: flex;
         align-items: center;
         gap: 10px;
-        flex-shrink: 0;
+        padding: 18px 28px;
+        background: var(--charcoal);
       }
 
-      .product-section-bar span {
-        font-size: 11px;
+      .prod-hero-tag span {
+        font-size: 10px;
         letter-spacing: 3px;
         text-transform: uppercase;
-        color: rgba(255,255,255,0.5);
+        color: rgba(255,255,255,0.4);
       }
 
-      .product-section-bar em {
-        font-size: 11px;
+      .prod-hero-tag em {
+        font-size: 10px;
         letter-spacing: 3px;
         text-transform: uppercase;
         color: var(--amber);
         font-style: normal;
       }
 
-      .product-body {
-        flex: 1;
-        padding: 36px 44px 32px;
-        display: flex;
-        flex-direction: column;
-        min-height: 0;
-        overflow: hidden;
+      /* Large number watermark in bottom-right of image */
+      .prod-watermark {
+        position: absolute;
+        bottom: -10px;
+        right: 20px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 140px;
+        color: rgba(255,255,255,0.07);
+        line-height: 1;
+        z-index: 2;
+        letter-spacing: -4px;
+        pointer-events: none;
       }
 
-      .product-num-label {
-        font-size: 11px;
+      /* Product name overlaid on bottom of image */
+      .prod-hero-title {
+        position: absolute;
+        bottom: 28px;
+        left: 28px;
+        z-index: 3;
+      }
+
+      .prod-hero-kicker {
+        font-size: 10px;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--amber);
-        margin-bottom: 10px;
-      }
-
-      .product-name {
-        font-family: "Playfair Display", serif;
-        font-size: 34px;
-        color: var(--bark);
-        line-height: 1.15;
-        margin-bottom: 12px;
-      }
-
-      .product-desc {
-        font-size: 13px;
-        line-height: 1.7;
-        color: #715746;
-        margin-bottom: 20px;
-        padding-bottom: 18px;
-        border-bottom: 1px solid rgba(139,94,60,0.15);
-      }
-
-      .product-cols {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        flex: 1;
-        min-height: 0;
-        overflow: hidden;
-      }
-
-      .product-col-head {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 3.5px;
-        text-transform: uppercase;
-        color: var(--amber);
-        margin-bottom: 14px;
-        padding-bottom: 8px;
-        border-bottom: 1.5px solid var(--amber);
+        margin-bottom: 6px;
         display: block;
       }
 
-      .product-feat-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+      .prod-hero-name {
+        font-family: "Playfair Display", serif;
+        font-size: 42px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.05;
+        letter-spacing: -0.5px;
+      }
+
+      /* Bottom 42% — content zone */
+      .prod-content {
+        flex: 1;
+        background: var(--cream);
+        display: grid;
+        grid-template-columns: 1fr 2px 1fr 2px 1fr;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Amber accent line at top of content zone */
+      .prod-content::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(to right, var(--amber), var(--timber), transparent);
+      }
+
+      .prod-divider {
+        background: rgba(139,94,60,0.15);
+        align-self: stretch;
+      }
+
+      .prod-col {
+        padding: 22px 24px 20px;
         display: flex;
         flex-direction: column;
         gap: 10px;
       }
 
-      .product-feat-list li {
-        font-size: 13px;
+      .prod-col-head {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--amber);
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(200,137,58,0.3);
+        margin-bottom: 2px;
+      }
+
+      .prod-col-body {
+        font-size: 12.5px;
+        line-height: 1.7;
+        color: #5a3e2b;
+      }
+
+      .prod-feat-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .prod-feat-list li {
+        font-size: 12px;
         color: #4a3228;
-        line-height: 1.55;
-        padding-left: 16px;
+        line-height: 1.5;
+        padding-left: 14px;
         position: relative;
       }
 
-      .product-feat-list li::before {
+      .prod-feat-list li::before {
         content: "";
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: var(--amber);
         position: absolute;
         left: 0;
         top: 7px;
+        width: 5px;
+        height: 1.5px;
+        background: var(--amber);
+      }
+
+
       }
 
 
@@ -1612,115 +1624,118 @@
 
       <!-- PAGE 4a: PRODUCT 01 -->
       <div class="page product-page">
-        <div class="product-image-panel" style="background-image: url('img/pallet.png');">
-          <div class="product-image-overlay"></div>
-          <div class="product-image-num">01</div>
-          <div class="product-image-label">Product 01</div>
-        </div>
-        <div class="product-content-panel">
-          <div class="product-section-bar">
+        <div class="prod-hero" style="background-image: url('img/pallet.png');">
+          <div class="prod-hero-tag">
             <span>03</span><span>//</span><em>Products</em>
           </div>
-          <div class="product-body">
-            <div class="product-num-label" contenteditable="true">Product 01 — Core Range</div>
-            <h2 class="product-name" contenteditable="true">Solid Wood<br/>Pallet</h2>
-            <p class="product-desc" contenteditable="true">Reliable pallet solutions for handling, stacking, transportation, and operational movement. Available in 2-way and 4-way entry — built to handle the demands of daily logistics without compromising on load integrity.</p>
-            <div class="product-cols">
-              <div>
-                <span class="product-col-head">Product Features</span>
-                <ul class="product-feat-list">
-                  <li contenteditable="true">Available in 2-way and 4-way forklift entry</li>
-                  <li contenteditable="true">Built for everyday logistics handling</li>
-                  <li contenteditable="true">Designed for stable load support</li>
-                  <li contenteditable="true">Suitable for commercial transport operations</li>
-                </ul>
-              </div>
-              <div>
-                <span class="product-col-head">Customisation Available</span>
-                <ul class="product-feat-list">
-                  <li contenteditable="true">Custom sizes and dimensions to fit your racking or transport requirements</li>
-                  <li contenteditable="true">Choice of timber species based on load and durability needs</li>
-                  <li contenteditable="true">Heat treatment available for export compliance</li>
-                  <li contenteditable="true">Bulk order quantities accommodated</li>
-                </ul>
-              </div>
-            </div>
+          <div class="prod-watermark">01</div>
+          <div class="prod-hero-title">
+            <span class="prod-hero-kicker">Product 01 — Solid Wood Pallet</span>
+            <div class="prod-hero-name">Solid Wood<br/>Pallet</div>
+          </div>
+        </div>
+        <div class="prod-content">
+          <div class="prod-col">
+            <div class="prod-col-head">Overview</div>
+            <p class="prod-col-body" contenteditable="true">Reliable pallet solutions for handling, stacking, transportation, and operational movement. Available in 2-way and 4-way entry. Built for daily logistics without compromising on load integrity.</p>
+          </div>
+          <div class="prod-divider"></div>
+          <div class="prod-col">
+            <div class="prod-col-head">Product Features</div>
+            <ul class="prod-feat-list">
+              <li contenteditable="true">Available in 2-way and 4-way forklift entry</li>
+              <li contenteditable="true">Built for everyday logistics handling</li>
+              <li contenteditable="true">Designed for stable load support</li>
+              <li contenteditable="true">Suitable for commercial transport operations</li>
+            </ul>
+          </div>
+          <div class="prod-divider"></div>
+          <div class="prod-col">
+            <div class="prod-col-head">Customisation</div>
+            <ul class="prod-feat-list">
+              <li contenteditable="true">Custom sizes and dimensions</li>
+              <li contenteditable="true">Choice of timber species</li>
+              <li contenteditable="true">Heat treatment for export compliance</li>
+              <li contenteditable="true">Bulk order quantities accommodated</li>
+            </ul>
           </div>
         </div>
       </div>
 
       <!-- PAGE 4b: PRODUCT 02 -->
       <div class="page product-page">
-        <div class="product-image-panel" style="background-image: url('img/product2.png');">
-          <div class="product-image-overlay"></div>
-          <div class="product-image-num">02</div>
-          <div class="product-image-label">Product 02</div>
-        </div>
-        <div class="product-content-panel">
-          <div class="product-section-bar">
+        <div class="prod-hero" style="background-image: url('img/product2.png');">
+          <div class="prod-hero-tag">
             <span>03</span><span>//</span><em>Products</em>
           </div>
-          <div class="product-body">
-            <div class="product-num-label" contenteditable="true">Product 02 — Core Range</div>
-            <h2 class="product-name" contenteditable="true">Laminated<br/>Wood</h2>
-            <p class="product-desc" contenteditable="true">Processed timber products prepared for cleaner finishes, consistency, and downstream applications. Ideal for manufacturers and contractors who need uniform sizing and a presentable surface.</p>
-            <div class="product-cols">
-              <div>
-                <span class="product-col-head">Product Features</span>
-                <ul class="product-feat-list">
-                  <li contenteditable="true">Provides more consistent finishes and sizing</li>
-                  <li contenteditable="true">Suitable for repeated commercial applications</li>
-                  <li contenteditable="true">Supports cleaner material presentation</li>
-                </ul>
-              </div>
-              <div>
-                <span class="product-col-head">Customisation Available</span>
-                <ul class="product-feat-list">
-                  <li contenteditable="true">Custom sizing and thickness available on request</li>
-                  <li contenteditable="true">Select from different timber species for varying finish and grain preference</li>
-                  <li contenteditable="true">Surface treatment and finish options to suit your application</li>
-                  <li contenteditable="true">Suitable for bulk and repeat commercial orders</li>
-                </ul>
-              </div>
-            </div>
+          <div class="prod-watermark">02</div>
+          <div class="prod-hero-title">
+            <span class="prod-hero-kicker">Product 02 — Laminated Wood</span>
+            <div class="prod-hero-name">Laminated<br/>Wood</div>
+          </div>
+        </div>
+        <div class="prod-content">
+          <div class="prod-col">
+            <div class="prod-col-head">Overview</div>
+            <p class="prod-col-body" contenteditable="true">Processed timber products prepared for cleaner finishes, consistency, and downstream applications. Ideal for manufacturers and contractors needing uniform sizing and a presentable surface.</p>
+          </div>
+          <div class="prod-divider"></div>
+          <div class="prod-col">
+            <div class="prod-col-head">Product Features</div>
+            <ul class="prod-feat-list">
+              <li contenteditable="true">More consistent finishes and sizing</li>
+              <li contenteditable="true">Suitable for repeated commercial applications</li>
+              <li contenteditable="true">Supports cleaner material presentation</li>
+            </ul>
+          </div>
+          <div class="prod-divider"></div>
+          <div class="prod-col">
+            <div class="prod-col-head">Customisation</div>
+            <ul class="prod-feat-list">
+              <li contenteditable="true">Custom sizing and thickness on request</li>
+              <li contenteditable="true">Different timber species available</li>
+              <li contenteditable="true">Surface treatment and finish options</li>
+              <li contenteditable="true">Bulk and repeat commercial orders</li>
+            </ul>
           </div>
         </div>
       </div>
 
       <!-- PAGE 4c: PRODUCT 03 -->
       <div class="page product-page">
-        <div class="product-image-panel" style="background-image: url('img/fj.jpeg');">
-          <div class="product-image-overlay"></div>
-          <div class="product-image-num">03</div>
-          <div class="product-image-label">Product 03</div>
-        </div>
-        <div class="product-content-panel">
-          <div class="product-section-bar">
+        <div class="prod-hero" style="background-image: url('img/fj.jpeg');">
+          <div class="prod-hero-tag">
             <span>03</span><span>//</span><em>Products</em>
           </div>
-          <div class="product-body">
-            <div class="product-num-label" contenteditable="true">Product 03 — Core Range</div>
-            <h2 class="product-name" contenteditable="true">Finger<br/>Joint</h2>
-            <p class="product-desc" contenteditable="true">Engineered timber components arranged for stable assembly and efficient material utilization. A smart choice for fabricators who need structural reliability without the cost of full-length solid timber.</p>
-            <div class="product-cols">
-              <div>
-                <span class="product-col-head">Product Features</span>
-                <ul class="product-feat-list">
-                  <li contenteditable="true">Supports efficient material utilization</li>
-                  <li contenteditable="true">Prepared for structured fabrication processes</li>
-                  <li contenteditable="true">Designed for operational practicality</li>
-                </ul>
-              </div>
-              <div>
-                <span class="product-col-head">Customisation Available</span>
-                <ul class="product-feat-list">
-                  <li contenteditable="true">Custom lengths and cross-section dimensions available</li>
-                  <li contenteditable="true">Timber species selection based on structural or aesthetic requirement</li>
-                  <li contenteditable="true">Treatment and finish options for indoor or outdoor application</li>
-                  <li contenteditable="true">Flexible order quantities for small and large manufacturers</li>
-                </ul>
-              </div>
-            </div>
+          <div class="prod-watermark">03</div>
+          <div class="prod-hero-title">
+            <span class="prod-hero-kicker">Product 03 — Finger Joint</span>
+            <div class="prod-hero-name">Finger<br/>Joint</div>
+          </div>
+        </div>
+        <div class="prod-content">
+          <div class="prod-col">
+            <div class="prod-col-head">Overview</div>
+            <p class="prod-col-body" contenteditable="true">Engineered timber components for stable assembly and efficient material utilization. A smart choice for fabricators who need structural reliability without the cost of full-length solid timber.</p>
+          </div>
+          <div class="prod-divider"></div>
+          <div class="prod-col">
+            <div class="prod-col-head">Product Features</div>
+            <ul class="prod-feat-list">
+              <li contenteditable="true">Supports efficient material utilization</li>
+              <li contenteditable="true">Prepared for structured fabrication processes</li>
+              <li contenteditable="true">Designed for operational practicality</li>
+            </ul>
+          </div>
+          <div class="prod-divider"></div>
+          <div class="prod-col">
+            <div class="prod-col-head">Customisation</div>
+            <ul class="prod-feat-list">
+              <li contenteditable="true">Custom lengths and cross-section dimensions</li>
+              <li contenteditable="true">Timber species selection available</li>
+              <li contenteditable="true">Indoor or outdoor treatment options</li>
+              <li contenteditable="true">Flexible order quantities</li>
+            </ul>
           </div>
         </div>
       </div>
