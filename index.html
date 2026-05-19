@@ -942,135 +942,148 @@
       }
 
 
+      /* ── PROCESS PAGE ── */
       .process-page {
         background: var(--mist);
-      }
-
-      .process-content {
-        flex: 1;
-        padding: 30px 50px 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .process-top {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        margin-bottom: 10px;
-      }
-
-      .process-top .page-title {
-        font-size: 38px;
-        margin-bottom: 4px;
-      }
-
-      .process-note {
-        font-size: 14px;
-        line-height: 1.4;
-        color: #7a6050;
-        max-width: 500px;
-      }
-
-      .timeline {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        flex: 1;
-      }
-
-      .timeline::before {
-        content: "";
-        position: absolute;
-        top: 4px;
-        bottom: 4px;
-        left: 50%;
-        width: 2px;
-        background: linear-gradient(
-          180deg,
-          rgba(200, 137, 58, 0.2) 0%,
-          rgba(200, 137, 58, 0.7) 14%,
-          rgba(200, 137, 58, 0.7) 86%,
-          rgba(200, 137, 58, 0.2) 100%
-        );
-        transform: translateX(-50%);
-      }
-
-      .timeline-item {
-        display: flex;
-        min-height: 76px;
-        position: relative;
-        width: 100%;
-      }
-
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--amber);
-        border: 3px solid var(--mist);
-        box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.18);
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-      }
-
-      .timeline-card {
-        background: white;
-        border: 1px solid rgba(139, 94, 60, 0.14);
-        display: flex;
-        flex-direction: column;
-        width: calc(50% - 22px);
         overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-        position: relative;
       }
 
-      .timeline-item:nth-child(odd) .timeline-card {
-        margin-right: auto;
+      .process-inner {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        min-height: 0;
       }
 
-      .timeline-item:nth-child(even) .timeline-card {
-        margin-left: auto;
+      .process-left {
+        width: 55%;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 28px 36px 24px;
+        overflow: hidden;
+        border-right: 1px solid rgba(139,94,60,0.15);
       }
 
-      .timeline-item:nth-child(7) .timeline-card {
-        width: calc(64% - 10px);
-        margin: 0 auto;
+      .process-header {
+        margin-bottom: 16px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(139,94,60,0.15);
+        flex-shrink: 0;
       }
 
-      .timeline-body {
-        padding: 14px 12px;
+      .process-steps {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .process-step {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        flex: 1;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(139,94,60,0.1);
+        min-height: 0;
+      }
+
+      .process-step:last-child {
+        border-bottom: none;
+      }
+
+      .process-step-num {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--amber);
+        letter-spacing: 1px;
+        flex-shrink: 0;
+        width: 20px;
+        padding-top: 2px;
+      }
+
+      .process-step-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .process-step-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--bark);
+        margin-bottom: 3px;
+      }
+
+      .process-step-desc {
+        font-size: 11.5px;
+        color: #7a6050;
+        line-height: 1.5;
+      }
+
+      /* Right photo strip */
+      .process-right {
+        flex: 1;
         display: grid;
-        grid-template-columns: 32px 1fr;
-        gap: 10px;
-        align-items: start;
+        grid-template-rows: repeat(4, 1fr);
+        overflow: hidden;
       }
 
-      .timeline-num {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 24px;
-        line-height: 1;
+      .process-photo {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .process-photo-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        transition: transform 0.3s ease;
+      }
+
+      .process-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 40%,
+          rgba(26,20,16,0.65) 100%
+        );
+        z-index: 1;
+      }
+
+      .process-photo-label {
+        position: absolute;
+        bottom: 9px;
+        left: 12px;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .process-photo-label-step {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
         color: var(--amber);
       }
 
-      .timeline-title {
-        font-family: "Playfair Display", serif;
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--bark);
-        margin-bottom: 2px;
+      .process-photo-label-name {
+        font-size: 11px;
+        color: rgba(255,255,255,0.85);
+        font-weight: 500;
       }
 
-      .timeline-desc {
-        font-size: 12px;
-        line-height: 1.4;
-        color: #664f40;
+      /* Separator between photos */
+      .process-photo + .process-photo {
+        border-top: 1px solid rgba(255,255,255,0.08);
       }
 
       .delivery-page {
@@ -1744,138 +1757,103 @@
       <!-- PAGE 5: PROCESS -->
       <div class="page process-page">
         <div class="section-label">04 <span>//</span> Production Process</div>
-        <div class="process-content">
-          <div class="process-top">
-            <div>
+        <div class="process-inner">
+
+          <!-- LEFT: header + 7 steps -->
+          <div class="process-left">
+            <div class="process-header">
               <div class="page-tag" contenteditable="true">Production Flow</div>
-              <h2 class="page-title" contenteditable="true">
-                Timber processing stages.<br />
+              <h2 class="page-title" style="font-size:28px; margin-bottom:0;" contenteditable="true">
+                Timber processing stages.<br/>
                 <em>From intake to delivery.</em>
               </h2>
             </div>
-          </div>
 
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-card">
-                <div class="timeline-body">
-                  <div class="timeline-num" contenteditable="true">01</div>
-                  <div>
-                    <div class="timeline-title" contenteditable="true">
-                      Log Selection
-                    </div>
-                    <div class="timeline-desc" contenteditable="true">
-                      Material intake begins with sorting and selecting timber
-                      according to usable output requirements.
-                    </div>
-                  </div>
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="process-step-num">01</div>
+                <div class="process-step-content">
+                  <div class="process-step-title" contenteditable="true">Log Selection</div>
+                  <div class="process-step-desc" contenteditable="true">Material intake begins with sorting and selecting timber according to usable output requirements.</div>
                 </div>
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-card">
-                <div class="timeline-body">
-                  <div class="timeline-num" contenteditable="true">02</div>
-                  <div>
-                    <div class="timeline-title" contenteditable="true">
-                      Cutting &amp; Sizing
-                    </div>
-                    <div class="timeline-desc" contenteditable="true">
-                      Logs are cut and dimensioned based on the product format
-                      needed for the next stage.
-                    </div>
-                  </div>
+              <div class="process-step">
+                <div class="process-step-num">02</div>
+                <div class="process-step-content">
+                  <div class="process-step-title" contenteditable="true">Cutting &amp; Sizing</div>
+                  <div class="process-step-desc" contenteditable="true">Logs are cut and dimensioned based on the product format needed for the next stage.</div>
                 </div>
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-card">
-                <div class="timeline-body">
-                  <div class="timeline-num" contenteditable="true">03</div>
-                  <div>
-                    <div class="timeline-title" contenteditable="true">
-                      Processing
-                    </div>
-                    <div class="timeline-desc" contenteditable="true">
-                      Timber is shaped, arranged, and prepared through the
-                      required processing workflow.
-                    </div>
-                  </div>
+              <div class="process-step">
+                <div class="process-step-num">03</div>
+                <div class="process-step-content">
+                  <div class="process-step-title" contenteditable="true">Processing</div>
+                  <div class="process-step-desc" contenteditable="true">Timber is shaped, arranged, and prepared through the required processing workflow.</div>
                 </div>
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-card">
-                <div class="timeline-body">
-                  <div class="timeline-num" contenteditable="true">04</div>
-                  <div>
-                    <div class="timeline-title" contenteditable="true">
-                      Treatment
-                    </div>
-                    <div class="timeline-desc" contenteditable="true">
-                      Where required, treatment steps support product readiness,
-                      handling standards, and export alignment.
-                    </div>
-                  </div>
+              <div class="process-step">
+                <div class="process-step-num">04</div>
+                <div class="process-step-content">
+                  <div class="process-step-title" contenteditable="true">Treatment</div>
+                  <div class="process-step-desc" contenteditable="true">Where required, treatment steps support product readiness, handling standards, and export alignment.</div>
                 </div>
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-card">
-                <div class="timeline-body">
-                  <div class="timeline-num" contenteditable="true">05</div>
-                  <div>
-                    <div class="timeline-title" contenteditable="true">
-                      Assembly
-                    </div>
-                    <div class="timeline-desc" contenteditable="true">
-                      Components are assembled into finished product form with
-                      attention to fit, structure, and repeatability.
-                    </div>
-                  </div>
+              <div class="process-step">
+                <div class="process-step-num">05</div>
+                <div class="process-step-content">
+                  <div class="process-step-title" contenteditable="true">Assembly</div>
+                  <div class="process-step-desc" contenteditable="true">Components are assembled into finished product form with attention to fit, structure, and repeatability.</div>
                 </div>
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-card">
-                <div class="timeline-body">
-                  <div class="timeline-num" contenteditable="true">06</div>
-                  <div>
-                    <div class="timeline-title" contenteditable="true">
-                      Quality Check
-                    </div>
-                    <div class="timeline-desc" contenteditable="true">
-                      Output is checked before dispatch so the workflow closes
-                      with accountability, not assumptions.
-                    </div>
-                  </div>
+              <div class="process-step">
+                <div class="process-step-num">06</div>
+                <div class="process-step-content">
+                  <div class="process-step-title" contenteditable="true">Quality Check</div>
+                  <div class="process-step-desc" contenteditable="true">Output is checked before dispatch so the workflow closes with accountability, not assumptions.</div>
                 </div>
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-card">
-                <div class="timeline-body">
-                  <div class="timeline-num" contenteditable="true">07</div>
-                  <div>
-                    <div class="timeline-title" contenteditable="true">
-                      Delivery
-                    </div>
-                    <div class="timeline-desc" contenteditable="true">
-                      Once your order is done, we coordinate loading and
-                      scheduling so it reaches you when you need it &mdash; not
-                      when it's convenient for us.
-                    </div>
-                  </div>
+              <div class="process-step">
+                <div class="process-step-num">07</div>
+                <div class="process-step-content">
+                  <div class="process-step-title" contenteditable="true">Delivery</div>
+                  <div class="process-step-desc" contenteditable="true">Once your order is done, we coordinate loading and scheduling so it reaches you when you need it.</div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- RIGHT: 4 photos stacked -->
+          <div class="process-right">
+            <div class="process-photo">
+              <div class="process-photo-bg" style="background-image: url('img/logselection.jpeg');"></div>
+              <div class="process-photo-label">
+                <span class="process-photo-label-step">Step 01</span>
+                <span class="process-photo-label-name">Log Selection</span>
+              </div>
+            </div>
+            <div class="process-photo">
+              <div class="process-photo-bg" style="background-image: url('img/cutting.jpeg');"></div>
+              <div class="process-photo-label">
+                <span class="process-photo-label-step">Step 02</span>
+                <span class="process-photo-label-name">Cutting &amp; Sizing</span>
+              </div>
+            </div>
+            <div class="process-photo">
+              <div class="process-photo-bg" style="background-image: url('img/process.jpeg');"></div>
+              <div class="process-photo-label">
+                <span class="process-photo-label-step">Step 03</span>
+                <span class="process-photo-label-name">Processing</span>
+              </div>
+            </div>
+            <div class="process-photo">
+              <div class="process-photo-bg" style="background-image: url('img/assembly.jpeg');"></div>
+              <div class="process-photo-label">
+                <span class="process-photo-label-step">Step 05</span>
+                <span class="process-photo-label-name">Assembly</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
